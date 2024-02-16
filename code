@@ -2,7 +2,7 @@
   import pandas as pd
 
 # Read data from file
-  df = pd.read_csv("/workspace/boilerplate-demographic-data-analyzer/adult.data.csv"
+  df = pd.read_csv("/adult.data.csv"
 
 # How many of each race are represented in this dataset? This should be a Pandas series with race names as the index labels.
   race_count = df['race'].value_counts()
@@ -37,5 +37,19 @@
 # Calculate the total count of individuals in each country
   total_count_by_country = df['native-country'].value_counts()
 
+# Calculate the percentage of individuals earning >50K in each country
+  percentage_earning_over_50k_by_country = (count_earning_over_50k_by_country / total_count_by_country) * 100
+
+# Round the percentages to the nearest tenth
+  rounded_percentage_earning_over_50k_by_country = percentage_earning_over_50k_by_country.round(1)
+
+# Find the country with the highest percentage of people earning >50K
+  highest_earning_country = rounded_percentage_earning_over_50k_by_country.idxmax()
+
+  highest_earning_country_percentage = rounded_percentage_earning_over_50k_by_country[highest_earning_country]
+
+# Identify the most popular occupation for those who earn >50K in India.
+    top_in = demo_data[(demo_data['native-country'] == 'India') & (demo_data['salary'] == '>50K')]
+    top_IN_occupation = top_in['occupation'].value_counts().idxmax()
 
 
