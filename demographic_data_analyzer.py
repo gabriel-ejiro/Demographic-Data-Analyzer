@@ -1,5 +1,4 @@
-# import packages
-  import pandas as pd
+import pandas as pd
 
 # Read data from file
   df = pd.read_csv("/adult.data.csv"
