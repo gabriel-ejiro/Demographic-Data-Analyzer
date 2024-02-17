@@ -48,7 +48,7 @@ import pandas as pd
   highest_earning_country_percentage = rounded_percentage_earning_over_50k_by_country[highest_earning_country]
 
 # Identify the most popular occupation for those who earn >50K in India.
-    top_in = demo_data[(demo_data['native-country'] == 'India') & (demo_data['salary'] == '>50K')]
-    top_IN_occupation = top_in['occupation'].value_counts().idxmax()
+  top_in = demo_data[(demo_data['native-country'] == 'India') & (demo_data['salary'] == '>50K')]
+  top_IN_occupation = top_in['occupation'].value_counts().idxmax()
 
 
