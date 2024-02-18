@@ -13,20 +13,25 @@ import pandas as pd
   percentage_bachelors = round(df[df['education'] == 'Bachelors'].shape[0] / df.shape[0] * 100, 1)
 
 # What percentage of people with advanced education (`Bachelors`, `Masters`, or `Doctorate`) make more than 50K?
-
-higher_education = df[df['education'].isin(['Bachelors', 'Masters', 'Doctorate'])]
+  higher_education = df[df['education'].isin(['Bachelors', 'Masters', 'Doctorate'])]
 # percentage with salary >50K
-higher_education_rich = round((higher_education[higher_education['salary'] == '>50K'].shape[0] / higher_education.shape[0]) * 100, 1)
-higher_education_rich
-
+  higher_education_rich = round((higher_education[higher_education['salary'] == '>50K'].shape[0] / higher_education.shape[0]) * 100, 1)
+  higher_education_rich
 
 # What is the minimum number of hours a person works per week (hours-per-week feature)?
   min_work_hours = df['hours-per-week'].min()
 
 # What percentage of the people who work the minimum number of hours per week have a salary of >50K?
-  num_min_workers = df[(df['hours-per-week'] == min_hours) & (df['salary'] == '>50K')]
-  rich_percentage = num_min_workers = round((rich_work.shape[0] / df[df['hours-per-week'] == min_hours].shape[0]) * 100)
+# To calculate the percentage correctly, you should divide the count of people who meet both 
+# conditions by the count of people who work the minimum number of hours per week. 
 
+# Calculate the number of people who work the minimum number of hours per week
+  min_hours = df['hours-per-week'].min()
+
+# Calculate the number of people who work the minimum number of hours per week and have a salary greater than 50K
+  num_min_workers = df[(df['hours-per-week'] == min_hours) & (df['salary'] == '>50K')]
+# Calculate the percentage
+  rich_percentage = round((rich_work.shape[0] / df[df['hours-per-week'] == min_hours].shape[0]) * 100)
 # What country has the highest percentage of people that earn >50K?
 # Calculate the count of individuals earning >50K in each country
   count_earning_over_50k_by_country = df[df['salary'] == '>50K']['native-country'].value_counts()
